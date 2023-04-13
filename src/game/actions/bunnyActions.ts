@@ -17,6 +17,12 @@ function bunnyActions(el: Sprite | AnimatedSprite, app: Application) {
     elVelocity = { ...initV };
   };
 
+  const handleUp = () => {
+    if (typeof elVelocity.y !== "number") return;
+    elVelocity.y = -6;
+    console.log("elVelocity: ", elVelocity);
+  };
+
   const handleRegisterClick = (cb: (e: any) => any) => {
     bunnyEl.interactive = true;
     bunnyEl.cursor = "pointer";
@@ -36,11 +42,11 @@ function bunnyActions(el: Sprite | AnimatedSprite, app: Application) {
         right: app.view.width,
         bottom: app.view.height,
       } as any);
-      // console.log("el._bounds.getRectangle(): ", el._bounds.getRectangle());
-      // console.log("isCollide: ", isCollide);
       if (!isCollide) {
-        // el.
         elVelocity.y = (elVelocity.y || 1) * -1 * 0.8;
+      }
+      if (bunnyEl.position.x < 0 || bunnyEl.position.x >= app.view.width) {
+        elVelocity.x = (elVelocity.x || 1) * -1 * 0.8;
       }
     });
     ticker.start();
@@ -53,6 +59,7 @@ function bunnyActions(el: Sprite | AnimatedSprite, app: Application) {
     handleRotate,
     handleShoot,
     handleRegisterClick,
+    handleUp,
   };
 }
 

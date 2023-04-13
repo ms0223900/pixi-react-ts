@@ -1,6 +1,6 @@
 import { PositionObj } from "../../pixi/types";
 
-const GRAVITY_ACC = 9.8 * 0.1;
+const GRAVITY_ACC = 9.8 * 0.01;
 
 const gravityAccecelarate = (
   pos: PositionObj,
