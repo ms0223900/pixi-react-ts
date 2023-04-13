@@ -3,8 +3,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import game from "./game";
 
-const PIXI_APP_WIDTH = 300;
-const PIXI_APP_HEIGHT = 300;
+const PIXI_APP_WIDTH = 800;
+const PIXI_APP_HEIGHT = 400;
 const PIXI_GAME = game({
   pixiAppOptions: {
     width: PIXI_APP_WIDTH,
@@ -31,7 +31,9 @@ const useApp = () => {
     if (!pixiAppRef.current) return;
 
     pixiAppRef.current.appendChild(pixiGame.current.pixiApp.view as any);
-    handleAddBunny();
+    setInterval(() => {
+      handleAddBunny();
+    }, 10);
     // pixiGame.current
   }, []);
 
